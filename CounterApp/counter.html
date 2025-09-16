@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Counter App</title>
+    </head>
+    <body>
+        <div id="root"></div>
+
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react@18/umd/react.development.js"
+        ></script>
+        <script
+            crossorigin
+            src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"
+        ></script>
+
+        <script type="text/babel">
+            const root = ReactDOM.createRoot(document.querySelector("#root"));
+
+            function CounterApp() {
+                const [value, setValue] = React.useState(0);
+
+                return (
+                    <>
+                        <div
+                            style={{
+                                color:
+                                    value > 0
+                                        ? "green"
+                                        : value < 0
+                                        ? "red"
+                                        : "gray",
+                            }}
+                        >
+                            <p>{value}</p>
+                        </div>
+                        <p>
+                            {value > 0
+                                ? "Dương"
+                                : value < 0
+                                ? "Âm"
+                                : "Bằng không"}
+                        </p>
+                        <button onClick={() => setValue(value + 1)}>
+                            Increase
+                        </button>
+                        <button onClick={() => setValue(value - 1)}>
+                            Decrease
+                        </button>
+                        <button onClick={() => setValue(0)}>Reset</button>
+                    </>
+                );
+            }
+
+            function App() {
+                return (
+                    <>
+                        <h1>Counter App</h1>
+                        <CounterApp />
+                    </>
+                );
+            }
+
+            root.render(<App />);
+        </script>
+    </body>
+</html>
