@@ -29,6 +29,11 @@ function CommentSystem() {
     function handleSubmit(e) {
         e.preventDefault();
 
+        if (!form.name.trim() || !form.email.trim() || !form.body.trim()) {
+            alert("Vui lòng điền đủ thông tin!");
+            return;
+        }
+
         const newComment = {
             ...form,
             id: comments.length + 1,
